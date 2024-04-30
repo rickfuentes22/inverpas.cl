@@ -24,9 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Rutas
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/v1/admin", require("./routes/adminRoutes"));
-app.use("/api/productos", require("./routes/productRoutes")); // Cambia la ruta a /api/productos
+app.use("/api/productos", require("./routes/productRoutes"));
 app.use("/api/contacto", require("./routes/contactoRoutes"));
-app.use("/api/noticias", require("./routes/noticiasRoutes")); // Nueva ruta para las noticias
+app.use("/api/noticias", require("./routes/noticiasRoutes"));
+app.use("/api/blogs", require("./routes/blogsRoutes"));
+
 
 app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("*", function (req, res) {
@@ -34,7 +36,7 @@ app.get("*", function (req, res) {
 })
 
 
-// Configuración del puertoo
+// Configuración del puerto
 const port = process.env.APP_PORT || 8080;
 app.listen(port, () => {
   console.log(
